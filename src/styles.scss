@@ -1,1 +1,66 @@
-/* You can add global styles to this file, and also import other style files */
+@import "typography.scss";
+@import "common-styles.scss";
+@import "~@angular/material/prebuilt-themes/deeppurple-amber.css";
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  background-color: color(primary);
+  color: color(neutral, dark);
+  margin: 0;
+  font-family: Inter;
+  font-size: 12px;
+}
+
+// the folowing does the part of a component library like stylesheet.
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+}
+
+h1 {
+  font-size: 2em;
+}
+h2 {
+  font-size: 1.8em;
+}
+
+a {
+  text-decoration: none;
+  color: color(neutral, dark);
+
+  &:hover {
+    text-decoration: underline;
+    text-decoration-color: color(neutral, dark);
+  }
+}
+
+//scrollbar
+/* The emerging W3C standard
+   that is currently Firefox-only */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #979ba0 #cecfd0;
+}
+
+/* Works on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+  width: 6px;
+}
+*::-webkit-scrollbar-track {
+  background: #cecfd0;
+  border-radius: 5px;
+}
+*::-webkit-scrollbar-thumb {
+  background: #979ba0;
+  border-radius: 5px;
+  border: none;
+}
