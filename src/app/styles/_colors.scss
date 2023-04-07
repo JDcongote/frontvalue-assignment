@@ -10,6 +10,12 @@ $colors: (
     light: lighten($primary-color, $lighten),
     dark: darken($primary-color, $darken),
   ),
+  accent: (
+    base: rgb(117, 60, 22),
+  ),
+  function: (
+    warn: rgb(207 78 78),
+  ),
   neutral: (
     base: #7f7f80,
     light: #d1d1d1,

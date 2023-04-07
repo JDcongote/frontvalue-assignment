@@ -1,0 +1,22 @@
+@import "common-styles.scss";
+
+.joke-list {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  max-width: 1600px;
+  margin-bottom: $defaultSpacing * 6;
+
+  &__joke{
+    margin-bottom: $defaultSpacing * 2;
+  }
+
+  &--empty {
+    font-weight: bold;
+    width: 100vw;
+    height: 70vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}

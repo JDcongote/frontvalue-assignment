@@ -6,6 +6,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SharedModule } from './modules/shared/shared.module';
 import { HeaderComponent } from './components/header/header.component';
+import { JokesModule } from './modules/+jokes/jokes.module';
 
 @NgModule({
   declarations: [AppComponent, HeaderComponent],
@@ -14,6 +15,7 @@ import { HeaderComponent } from './components/header/header.component';
     BrowserAnimationsModule,
     AppRoutingModule,
     SharedModule,
+    JokesModule
   ],
   providers: [],
   bootstrap: [AppComponent],

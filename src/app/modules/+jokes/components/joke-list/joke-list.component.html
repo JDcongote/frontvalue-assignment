@@ -1,0 +1,14 @@
+<ng-container *ngIf="{
+    jokesList: jokesList$ | async,
+    listLoading: jokesLoading$ | async
+  } as jokes">
+
+  <ul class="joke-list">
+    <li *ngFor="let joke of jokes.jokesList" class="joke-list__joke">
+      <app-joke [joke]="joke"></app-joke>
+    </li>
+  </ul>
+  <h2 *ngIf="jokes.jokesList?.length === 0" class="joke-list--empty">
+    empyt
+  </h2>
+</ng-container>
