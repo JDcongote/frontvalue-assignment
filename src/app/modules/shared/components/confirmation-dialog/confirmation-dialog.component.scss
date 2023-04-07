@@ -1,0 +1,15 @@
+@import "common-styles.scss";
+
+.confirmation-dialog {
+  padding: $defaultSpacing * 3;
+
+  &__actions {
+    margin-top: $defaultSpacing * 4;
+    display: flex;
+    flex-direction: row-reverse;
+
+    button {
+      margin-right: $defaultSpacing;
+    }
+  }
+}

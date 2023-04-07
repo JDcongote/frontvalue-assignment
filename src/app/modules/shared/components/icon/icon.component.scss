@@ -1,0 +1,31 @@
+@import "common-styles.scss";
+
+.icon {
+  display: flex;
+  align-items: center;
+  justify-items: center;
+  color: color(neutral, dark);
+
+  &--secondary {
+    color: color(neutral, light);
+  }
+  &--small {
+    font-size: 1.3em;
+    height: 1.3em;
+    width: 1.3em;
+  }
+  &--big {
+    font-size: 2em;
+    height: 2em;
+    width: 2em;
+  }
+  &--button {
+    &:hover {
+      color: color(neutral, dark);
+    }
+  }
+}
+
+:host {
+  display: inline;
+}

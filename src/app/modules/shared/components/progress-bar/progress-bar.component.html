@@ -1,0 +1,11 @@
+<div *ngIf="loading$ | async as loading" class="progress-bar">
+  <ng-container *ngIf="status$ | async as status">
+    <div
+      class="progress-bar__progress"
+      [ngStyle]="{ width: (status.current / status.total) * 100 + '%' }"
+    ></div>
+    <span class="progress-bar__text"
+      >{{ status.current }} of {{ status.total }} loaded</span
+    >
+  </ng-container>
+</div>

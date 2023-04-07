@@ -1,0 +1,23 @@
+$primary-color: #d4d4d4;
+$white: #fff;
+
+$lighten: 5;
+$darken: 25;
+
+$colors: (
+  primary: (
+    base: $primary-color,
+    light: lighten($primary-color, $lighten),
+    dark: darken($primary-color, $darken),
+  ),
+  neutral: (
+    base: #7f7f80,
+    light: #d1d1d1,
+    dark: #303030,
+  ),
+);
+
+@function color($base, $shade: base) {
+  $color: map-get(map-get($colors, $base), $shade);
+  @return $color;
+}
