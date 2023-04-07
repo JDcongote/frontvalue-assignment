@@ -5,6 +5,7 @@ import { BehaviorSubject } from 'rxjs/internal/BehaviorSubject';
 import { Joke, JokeAPIResponse } from 'src/app/typings';
 import {
   Observable,
+  Subscription,
   exhaustMap,
   filter,
   map,
@@ -22,6 +23,7 @@ export class JokesService {
   private jokesList$: BehaviorSubject<Joke[]> = new BehaviorSubject<Joke[]>([]);
   private jokesLoading$: BehaviorSubject<boolean> =
     new BehaviorSubject<boolean>(false);
+  autoFetcher!: Subscription;
   constructor(private httpService: HttpClient) {}
 
   public getJokesList$(): Observable<Joke[]> {
@@ -30,6 +32,10 @@ export class JokesService {
 
   public getJokesLoading$(): Observable<boolean> {
     return this.jokesLoading$.asObservable();
+  }
+
+  ngOnDestroy(){
+    this.autoFetcher.unsubscribe();
   }
 
   public getJokes() {
@@ -47,13 +53,23 @@ export class JokesService {
         this.startAutoFetching();
       });
   }
-  startAutoFetching() {
-    let autoRefresher = timer(0, 5000)
+
+  private startAutoFetching() {
+    this.autoFetcher = timer(0, 5000)
       .pipe(
         exhaustMap(() => this.getJoke()),
         skip(1)
       )
       .subscribe((response) => {
+        let jokeList = [...this.jokesList$.getValue()];
+        jokeList.sort((a: Joke, b: Joke) => {
+          return a.createdAt < b.createdAt ? -1 : 1;
+        });
+        const firstJoke = jokeList[0];
+        const idx = this.jokesList$.getValue().findIndex((joke: Joke) => joke.id === firstJoke.id);
+        jokeList = [...this.jokesList$.getValue()];
+        jokeList[idx] = response;
+        this.jokesList$.next(jokeList);
       });
   }
 

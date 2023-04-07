@@ -64,3 +64,10 @@ a {
   border-radius: 5px;
   border: none;
 }
+
+
+ul {
+  columns: 2;
+  -webkit-columns: 2;
+  -moz-columns: 2;
+}
