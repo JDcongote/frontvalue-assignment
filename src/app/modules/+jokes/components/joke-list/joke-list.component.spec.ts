@@ -102,20 +102,12 @@ const JOKE_ARRAY = [
   },
 ];
 
-class MockJokeService {
-  getJokesList$() {
-    return of();
-  }
-  getJokes() {}
-}
-
 describe('JokeListComponent', () => {
   let component: JokeListComponent;
   let fixture: ComponentFixture<JokeListComponent>;
   let mockJokeService;
 
   beforeEach(async () => {
-    //mockJokeService = new MockJokeService();
     mockJokeService = jasmine.createSpyObj<JokesService>('JokesService',['getJokesList$', 'getJokes']);
     mockJokeService.getJokesList$.and.returnValue(of(JOKE_ARRAY));
     mockJokeService.getJokes.and.returnValue();

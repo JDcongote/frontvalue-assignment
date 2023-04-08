@@ -106,7 +106,7 @@ class MockJokeService {
   getJokesList$() {
     return of(JOKE_ARRAY);
   }
-  getJokes() {}
+  getJokes: undefined
 }
 
 describe('FavoriteListComponent', () => {
