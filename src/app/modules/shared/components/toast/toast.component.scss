@@ -1,0 +1,53 @@
+@import "common-styles.scss";
+
+.toast-container {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100vw;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .toast {
+    display: flex;
+    align-items: center;
+    min-width: 200px;
+    max-width: 500px;
+    min-height: 60px;
+    border-radius: calc($defaultSpacing / 2);
+    box-sizing: border-box;
+    padding: $defaultSpacing * 2;
+
+
+    &--info {
+      background-color: color(function, info);
+    }
+    &--warn {
+      background-color: color(function, warn);
+    }
+    &--error {
+      background-color: color(function, error);
+    }
+
+    &__text {
+        color: $white;
+        margin-left: $defaultSpacing;
+        font-size: 1.2em;
+        font-weight: 600;
+    }
+
+    &__divider{
+        height: 40px;
+        width: 2px;
+        background-color: $white;
+        margin: 0 $defaultSpacing * 2;
+        opacity: 0.1;
+    }
+
+    &__icon {
+      color: $white;
+    }
+  }
+}

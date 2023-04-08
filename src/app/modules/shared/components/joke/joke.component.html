@@ -13,7 +13,11 @@
     </div>
   </div>
 
-  <app-icon [outlined]="true" size="big" class="joke__add-favorite"
+  <app-icon [outlined]="true" size="big" class="joke__add-favorite" 
+  [ngClass]="{
+    'add-favorite--added': joke.isFavorite
+  }"
+  (click)="onToggleFavorite(joke)"
     >favorite</app-icon
   >
 </div>

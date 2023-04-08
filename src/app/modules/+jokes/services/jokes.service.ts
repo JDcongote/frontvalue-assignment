@@ -33,11 +33,7 @@ export class JokesService {
   public getJokesLoading$(): Observable<boolean> {
     return this.jokesLoading$.asObservable();
   }
-
-  ngOnDestroy(){
-    this.autoFetcher.unsubscribe();
-  }
-
+  
   public getJokes() {
     this.getJoke()
       .pipe(
@@ -50,7 +46,7 @@ export class JokesService {
         take(1)
       )
       .subscribe((_) => {
-        this.startAutoFetching();
+        //this.startAutoFetching();
       });
   }
 

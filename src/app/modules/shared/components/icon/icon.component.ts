@@ -13,9 +13,6 @@ export class IconComponent {
   button: boolean = false;
 
   @Input()
-  color: 'primary' | 'secondary' = 'primary';
-
-  @Input()
   size: 'small' | 'medium' | 'big' = 'medium';
 
   constructor() {}

@@ -5,6 +5,7 @@ export interface Joke {
   updatedAt: Date;
   url: string;
   value: string;
+  isFavorite?: boolean;
 }
 
 export interface JokeAPIResponse {

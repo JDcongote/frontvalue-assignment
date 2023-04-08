@@ -1,0 +1,15 @@
+<div *ngIf="toast$ | async as toast" class="toast-container">
+  <div
+    class="toast"
+    [ngClass]="{
+      'toast--info': toast.type === 'info',
+      'toast--warn': toast.type === 'warn',
+      'toast--error': toast.type === 'error',
+    }"
+  >
+    <app-icon class="toast__icon">error</app-icon>
+    <p class="toast__text">{{ toast.message }}</p>
+    <div class="toast__divider"></div>
+    <app-icon class="toast__icon toast__icon--close" [button]="true" (click)="dismiss()">close</app-icon>
+  </div>
+</div>

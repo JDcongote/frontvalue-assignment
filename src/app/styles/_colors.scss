@@ -14,7 +14,9 @@ $colors: (
     base: rgb(117, 60, 22),
   ),
   function: (
-    warn: rgb(207 78 78),
+    info: rgb(72, 103, 206),
+    warn: rgb(204, 183, 64),
+    error: rgb(204, 64, 64),
   ),
   neutral: (
     base: #7f7f80,

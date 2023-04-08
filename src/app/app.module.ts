@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { SharedModule } from './modules/shared/shared.module';
 import { HeaderComponent } from './components/header/header.component';
 import { JokesModule } from './modules/+jokes/jokes.module';
+import { FavoritesModule } from './modules/+favorites/favorites.module';
 
 @NgModule({
   declarations: [AppComponent, HeaderComponent],
@@ -15,7 +16,8 @@ import { JokesModule } from './modules/+jokes/jokes.module';
     BrowserAnimationsModule,
     AppRoutingModule,
     SharedModule,
-    JokesModule
+    JokesModule,
+    FavoritesModule
   ],
   providers: [],
   bootstrap: [AppComponent],
