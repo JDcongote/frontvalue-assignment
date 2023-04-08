@@ -12,7 +12,6 @@ export class ProgressBarService {
   private status$: BehaviorSubject<ProgresBarModel> =
     new BehaviorSubject<ProgresBarModel>({ current: 0, total: 0 });
 
-  constructor() {}
 
   public initialize(model: ProgresBarModel) {
     this.status$.next(model);

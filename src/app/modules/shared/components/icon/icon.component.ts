@@ -7,13 +7,11 @@ import { Component, Input } from '@angular/core';
 })
 export class IconComponent {
   @Input()
-  outlined: boolean = false;
+  outlined = false;
 
   @Input()
-  button: boolean = false;
+  button = false;
 
   @Input()
   size: 'small' | 'medium' | 'big' = 'medium';
-
-  constructor() {}
 }

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { ToastMessage, ToastType } from '../typings';
-import { BehaviorSubject, Observable, Subscription, delay, of, take, timeout } from 'rxjs';
+import { BehaviorSubject, Observable, Subscription, delay, take } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -18,7 +18,7 @@ export class ToasterService {
     this.currentToast$.next({type,message});
     // set timeout to autoclose toaster
     this.timeoutSub && this.timeoutSub.unsubscribe();
-    this.timeoutSub = this.currentToast$.asObservable().pipe(delay(3000),take(1)).subscribe(_ => this.dismiss());
+    this.timeoutSub = this.currentToast$.asObservable().pipe(delay(3000),take(1)).subscribe(() => this.dismiss());
   }
 
   public dismiss() {
