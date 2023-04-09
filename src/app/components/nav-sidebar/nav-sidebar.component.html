@@ -1,0 +1,20 @@
+<section class="sidebar">
+  <nav>
+    <ul class="sidebar__nav-list">
+      <li class="nav-list__item">
+        <a [routerLink]="['/jokes']" routerLinkActive="link-active">
+          <app-icon size="big" class="nav-list__icon" [button]="true"
+            >home</app-icon
+          >
+        </a>
+      </li>
+      <li class="nav-list__item">
+        <a [routerLink]="['/favorites']" routerLinkActive="link-active">
+          <app-icon size="big" class="nav-list__icon" [button]="true"
+            >favorite</app-icon
+          >
+        </a>
+      </li>
+    </ul>
+  </nav>
+</section>

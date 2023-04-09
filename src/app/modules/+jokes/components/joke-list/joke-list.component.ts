@@ -18,4 +18,8 @@ export class JokeListComponent {
     this.jokesList$ = this.jokesService.getJokesList$();
     this.jokesService.getJokes();
   }
+
+  ngOnDestroy(){
+    this.jokesService.reset();
+  }
 }

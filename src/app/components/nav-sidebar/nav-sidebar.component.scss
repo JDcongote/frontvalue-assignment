@@ -1,0 +1,36 @@
+@import "common-styles.scss";
+
+.sidebar {
+  background-color: color(primary, darkest);
+  color: color(neutral, light);
+  height: 100%;
+  padding: $defaultSpacing;
+  padding-top: $defaultSpacing * 6;
+
+  &__nav-list{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    
+
+    .nav-list{
+        &__item{
+            margin-top: $defaultSpacing * 2;
+        }
+        &__icon{            
+            color: color(neutral, dark);
+            font-size: 1.5em;
+            &:hover{
+                filter: invert(1);
+            }
+        }
+    }
+    .link-active{
+        .nav-list__icon{
+            color: color(neutral, light);
+           
+        }
+    }
+  }
+}

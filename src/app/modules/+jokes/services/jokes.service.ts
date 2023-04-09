@@ -9,7 +9,6 @@ import {
   exhaustMap,
   filter,
   map,
-  of,
   repeat,
   skip,
   take,
@@ -20,7 +19,7 @@ import {
   providedIn: 'root',
 })
 export class JokesService {
-  private jokesList$: BehaviorSubject<Joke[]> = new BehaviorSubject<Joke[]>([]);
+  private jokesList$: BehaviorSubject<Joke[]> = new BehaviorSubject<Joke[]>(Array(10));
   private jokesLoading$: BehaviorSubject<boolean> =
     new BehaviorSubject<boolean>(false);
   autoFetcher!: Subscription;
@@ -35,23 +34,38 @@ export class JokesService {
   }
   
   public getJokes() {
+    let index = 0;
+    let list = this.jokesList$.getValue();
     this.getJoke()
       .pipe(
         repeat(),
         filter((joke: Joke) => {
           // add to list
-          this.jokesList$.next([...this.jokesList$.getValue(), joke]);
-          return !(this.jokesList$.getValue().length < 10);
+          list[index++] = joke;
+          this.jokesList$.next(list);
+          return !(index < 10);
         }),
         take(1)
       )
       .subscribe((_) => {
-        //this.startAutoFetching();
+        this.startAutoFetching();
       });
   }
 
+  /**
+   * stop the auto refresher, reset the list
+   */
+  public reset() {
+    this.autoFetcher?.unsubscribe();
+    this.jokesList$ = new BehaviorSubject<Joke[]>(Array(10));
+  }
+
+  /**
+   * will start a subscription that fetches a new joke every 5 seconds and replaces the oldest one in the list
+   */
   private startAutoFetching() {
-    this.autoFetcher = timer(0, 5000)
+    // fetching them every 8 seconds, 5 is to little time to read new jokes.
+    this.autoFetcher = timer(0, 8000)
       .pipe(
         exhaustMap(() => this.getJoke()),
         skip(1)
@@ -62,9 +76,14 @@ export class JokesService {
           return a.createdAt < b.createdAt ? -1 : 1;
         });
         const firstJoke = jokeList[0];
-        const idx = this.jokesList$.getValue().findIndex((joke: Joke) => joke.id === firstJoke.id);
+        const idx = this.jokesList$.getValue().findIndex((joke: Joke) => joke?.id === firstJoke.id);
         jokeList = [...this.jokesList$.getValue()];
-        jokeList[idx] = response;
+        jokeList[idx].isLeaving = true;
+        setTimeout(() => {
+          jokeList[idx] = response;
+          jokeList[idx].isArriving = true;
+        },1000);
+        
         this.jokesList$.next(jokeList);
       });
   }
@@ -75,6 +94,11 @@ export class JokesService {
       .pipe(map((joke: JokeAPIResponse) => this.mapJoke(joke)));
   }
 
+  /**
+   * Maps a response joke to this applications typings
+   * @param serverJoke 
+   * @returns 
+   */
   private mapJoke(serverJoke: JokeAPIResponse): Joke {
     return {
       createdAt: new Date(serverJoke.created_at),

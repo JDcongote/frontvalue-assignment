@@ -5,9 +5,8 @@ import {
 } from '@angular/common/http/testing';
 
 import { JokesService } from './jokes.service';
-import { HttpClient } from '@angular/common/http';
 import { Joke, JokeAPIResponse } from 'src/app/typings';
-import { repeat, skip, takeWhile } from 'rxjs';
+import { skip } from 'rxjs';
 
 describe('JokesService', () => {
   const JOKE: JokeAPIResponse = {
@@ -20,7 +19,7 @@ describe('JokesService', () => {
       "Chuck Norris doesn't clip his fingernails. He rips them with his bare hands and regrows new ones immediately.",
   };
 
-  const JOKE_RESPONSE: Joke[] = [
+  const JOKE_RESPONSE: Joke = 
     {
       createdAt: new Date('2020-01-05T12:42:23.484Z'),
       iconUrl: 'https://assets.chucknorris.host/img/avatar/chuck-norris.png',
@@ -29,8 +28,7 @@ describe('JokesService', () => {
       url: 'https://api.chucknorris.io/jokes/-Du82AQAQPqzh9G6KmXhrw',
       value:
         "Chuck Norris doesn't clip his fingernails. He rips them with his bare hands and regrows new ones immediately.",
-    },
-  ];
+    };
 
   let service: JokesService;
   let httpCtrl: HttpTestingController;
@@ -43,12 +41,12 @@ describe('JokesService', () => {
     httpCtrl = TestBed.inject(HttpTestingController);
   });
 
-  it('Should return blogs from Http Get call.', () => {
+  it('Should return jokes from Http Get call.', () => {
     const obs = service.getJokesList$();
     obs.pipe(skip(1)).subscribe({
       next: (response) => {
         expect(response).toBeTruthy();
-        expect(response).toEqual(JOKE_RESPONSE);
+        expect(response[0]).toEqual(JOKE_RESPONSE);
       },
     });
     service.getJokes();

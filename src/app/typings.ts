@@ -6,6 +6,8 @@ export interface Joke {
   url: string;
   value: string;
   isFavorite?: boolean;
+  isLeaving?: boolean;
+  isArriving?: boolean;
 }
 
 export interface JokeAPIResponse {

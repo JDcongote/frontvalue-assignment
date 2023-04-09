@@ -1,7 +1,7 @@
 @import "common-styles.scss";
 
 .header {
-  height: 60px;
+  height: $headerHeight;
   width: 100%;
   background-color: color(neutral, dark);
   color: color(neutral, light);
@@ -9,5 +9,4 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-bottom: $defaultSpacing * 6;
 }

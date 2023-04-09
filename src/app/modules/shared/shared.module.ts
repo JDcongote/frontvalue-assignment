@@ -4,21 +4,19 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
 import { IconComponent } from './components/icon/icon.component';
-import { ProgressBarComponent } from './components/progress-bar/progress-bar.component';
-import { ConfirmationDialogComponent } from './components/confirmation-dialog/confirmation-dialog.component';
 import { JokeComponent } from './components/joke/joke.component';
 import { ToastComponent } from './components/toast/toast.component';
+import { SkeletonLoaderComponent } from './components/skeleton-loader/skeleton-loader.component';
 
 @NgModule({
   declarations: [
     IconComponent,
-    ProgressBarComponent,
-    ConfirmationDialogComponent,
     JokeComponent,
-    ToastComponent
+    ToastComponent,
+    SkeletonLoaderComponent
   ],
   imports: [CommonModule, MatIconModule, MatDialogModule, MatButtonModule],
-  exports: [IconComponent, ProgressBarComponent, MatButtonModule, JokeComponent, ToastComponent],
+  exports: [IconComponent, MatButtonModule, JokeComponent, ToastComponent],
   bootstrap: [IconComponent, JokeComponent],
 })
 export class SharedModule {}

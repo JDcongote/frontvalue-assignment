@@ -125,11 +125,9 @@ describe('FavoriteListComponent', () => {
     fixture = TestBed.createComponent(FavoriteListComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
-    
-    const serv = TestBed.inject(JokesService);
   });
 
-  it('should createa', () => {
+  it('should create', () => {
     expect(true).toBeTruthy();
   });
 });

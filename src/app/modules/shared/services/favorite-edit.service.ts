@@ -19,7 +19,11 @@ export class FavoriteEditService {
     return this.favoritesList$.asObservable();
   }
 
-  public toggleFavorite(joke: Joke) {
+  /**
+   * If this joke is a favorite remove it from the list, else add it
+   * @param joke 
+   */
+  public toggleFavorite(joke: Joke): void {
     const list = [...this.favoritesList$.getValue()];
     if (list?.length < 10) {
       joke.isFavorite = !joke.isFavorite;
@@ -46,7 +50,7 @@ export class FavoriteEditService {
     return favorites ? JSON.parse(favorites) : [];
   }
 
-  private saveInStorage() {
+  private saveInStorage(): void {
     localStorage.setItem(
       'chuckNorrisFavorites',
       JSON.stringify(this.favoritesList$.getValue())

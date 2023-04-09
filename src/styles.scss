@@ -16,6 +16,11 @@ body {
   font-size: 12px;
 }
 
+html, 
+body {
+    height: 100%;
+}
+
 // the folowing does the part of a component library like stylesheet.
 h1,
 h2,

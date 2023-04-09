@@ -1,3 +1,11 @@
 @import "colors.scss";
 
 $defaultSpacing: 8px;
+$headerHeight: 60px;
+
+@function randomNum($min, $max) {
+    $rand: random();
+    $randomNum: $min + floor($rand * (($max - $min) + 1));
+  
+    @return $randomNum;
+  }

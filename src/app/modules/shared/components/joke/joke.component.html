@@ -1,23 +1,33 @@
-<div class="joke">
+<div class="joke" [ngClass]="{
+  'joke--leaving': joke?.isLeaving,
+  'joke--arriving': joke?.isArriving
+}">
   <div class="joke__container">
     <img
-      [src]="joke.iconUrl"
+      [src]="joke?.iconUrl"
       onerror="this.src='/assets/images/chuck-norris.png';"
       class="joke__image"
     />
-    <div class="joke__text-container">
+    <div class="joke__text-container" [ngClass]="{
+      'joke__text-container--loading': loading
+    }">
       <span class="joke__quotation">“</span>
-      <p class="joke__text">
-        {{ joke.value }}
+      <p class="joke__text" *ngIf="!loading" id="joke-text">
+        {{ joke?.value }}
       </p>
+      <app-skeleton-loader *ngIf="loading"></app-skeleton-loader>
     </div>
   </div>
 
-  <app-icon [outlined]="true" size="big" class="joke__add-favorite" 
-  [ngClass]="{
-    'add-favorite--added': joke.isFavorite
-  }"
-  (click)="onToggleFavorite(joke)"
+  <app-icon
+    *ngIf="!loading"
+    [outlined]="true"
+    size="big"
+    class="joke__add-favorite"
+    [ngClass]="{
+      'add-favorite--added': joke?.isFavorite
+    }"
+    (click)="onToggleFavorite(joke)"
     >favorite</app-icon
   >
 </div>

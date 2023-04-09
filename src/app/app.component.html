@@ -1,5 +1,8 @@
 <app-header [title]="'Chuck Norris\'s jokes galore'"></app-header>
-<section class="main">
-  <router-outlet></router-outlet>
-</section>
-<app-toast></app-toast>
+<main class="app">
+  <app-nav-sidebar></app-nav-sidebar>
+  <section class="app__main">
+    <router-outlet></router-outlet>
+  </section>
+  <app-toast></app-toast>
+</main>

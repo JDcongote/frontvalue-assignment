@@ -8,9 +8,10 @@ import { SharedModule } from './modules/shared/shared.module';
 import { HeaderComponent } from './components/header/header.component';
 import { JokesModule } from './modules/+jokes/jokes.module';
 import { FavoritesModule } from './modules/+favorites/favorites.module';
+import { NavSidebarComponent } from './components/nav-sidebar/nav-sidebar.component';
 
 @NgModule({
-  declarations: [AppComponent, HeaderComponent],
+  declarations: [AppComponent, HeaderComponent, NavSidebarComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,

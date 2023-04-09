@@ -108,7 +108,7 @@ describe('JokeListComponent', () => {
   let mockJokeService;
 
   beforeEach(async () => {
-    mockJokeService = jasmine.createSpyObj<JokesService>('JokesService',['getJokesList$', 'getJokes']);
+    mockJokeService = jasmine.createSpyObj<JokesService>('JokesService',['getJokesList$', 'getJokes', 'reset']);
     mockJokeService.getJokesList$.and.returnValue(of(JOKE_ARRAY));
     mockJokeService.getJokes.and.returnValue();
     await TestBed.configureTestingModule({
@@ -120,11 +120,9 @@ describe('JokeListComponent', () => {
     fixture = TestBed.createComponent(JokeListComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
-    
-    const serv = TestBed.inject(JokesService);
   });
 
-  it('should createa', () => {
+  it('should create', () => {
     expect(true).toBeTruthy();
   });
 });

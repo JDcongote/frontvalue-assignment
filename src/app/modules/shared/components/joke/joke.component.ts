@@ -9,11 +9,17 @@ import { FavoriteEditService } from '../../services/favorite-edit.service';
 })
 export class JokeComponent {
   @Input()
-  joke!: Joke;
+  joke!: Joke |undefined;
 
-  constructor(private favoriteService: FavoriteEditService){}
+  loading: any;
 
-  protected onToggleFavorite(joke: Joke): void {
-    this.favoriteService.toggleFavorite(joke)
+  constructor(private favoriteService: FavoriteEditService) {}
+
+  ngOnInit(){
+    this.loading = !this.joke;
+  }
+
+  protected onToggleFavorite(joke: Joke | undefined): void {
+    joke && this.favoriteService.toggleFavorite(joke)
   }
 }

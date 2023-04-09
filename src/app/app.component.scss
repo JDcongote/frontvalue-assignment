@@ -1,4 +1,19 @@
-.main{
-    display: flex;
-    justify-content: center;
+@import "common-styles.scss";
+
+.app{
+    height: calc(100% - $headerHeight);
+    display: grid;
+    grid-template-columns: 50px 1fr;
+    grid-template-rows: 1fr;
+
+    &__main{
+        margin-top: $defaultSpacing * 6;
+        display: flex;
+        justify-content: center;
+    }
+}
+
+:host{
+    display: block;
+    height: 100%;
 }
