@@ -25,7 +25,7 @@ export class FavoriteEditService {
    */
   public toggleFavorite(joke: Joke): void {
     const list = [...this.favoritesList$.getValue()];
-    if (list?.length < 10) {
+    if (list?.length < 10 || joke.isFavorite) {
       joke.isFavorite = !joke.isFavorite;
       if (joke.isFavorite) {
         this.favoritesList$.next([...list, joke]);
